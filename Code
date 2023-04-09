@@ -9,10 +9,10 @@ from tensorflow import keras
 from requests.auth import HTTPBasicAuth
 
 # Set up OpenAI API client
-openai.api_key = os.environ.get('OPENAI_API_KEY')
+openai.api_key = "YOUR_OPENAI_API_KEY_HERE"
 
 # Set up GitHub API client
-github_access_token = os.environ.get('GITHUB_ACCESS_TOKEN')
+github_access_token = "YOUR_GITHUB_ACCESS_TOKEN_HERE"
 headers = {
     "Authorization": f"token {github_access_token}",
     "Accept": "application/vnd.github.v3+json"
@@ -54,8 +54,6 @@ for i in range(1000):
     # Incorporate ChatGPT's suggestion into the code and continue training your neural network
     x.append(i)
     y.append(len(suggestion))
-    # Transfer learning code here
-    # Reinforcement learning code here
     
     # Train the neural network on ChatGPT's responses
     model.fit(x, y, epochs=1, verbose=0)
@@ -81,3 +79,7 @@ for i in range(1000):
     wait_time = random.randint(60, 300)  # Generate a random wait time in seconds
     print(f"Waiting for {wait_time} seconds before starting the next cycle...")
     time.sleep(wait_time)
+    
+    # Check if 1000 cycles have been completed and exit the loop if true
+    if i == 999:
+        break
